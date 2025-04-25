@@ -1,0 +1,108 @@
+---
+title: "FYP"
+output: pdf_document
+date: "2025-04-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, warning=FALSE}
+library(stats)
+library(tidyverse)
+library(readxl)
+results <- read.csv("final_results.csv")
+flatten_results <- read.csv("flatten_final_results.csv")
+
+head(results)
+colnames(results)
+results$ADVERSE_EVENT_FLAG <- recode(results$ADVERSE_EVENT_FLAG, "Y" = 1, "N" = 0, .default = NA_real_)
+flatten_results$ADVERSE_EVENT_FLAG <- recode(flatten_results$ADVERSE_EVENT_FLAG, "Y" = 1, "N" = 0, .default = NA_real_)
+```
+
+
+```{r}
+table(results$ADVERSE_EVENT_FLAG)
+
+# Fit the initial full model
+# PATIENT_AGE
+initial_model <- lm(ADVERSE_EVENT_FLAG ~ PATIENT_SEX + PATIENT_WEIGHT + PATIENT_ETHNICITY + PATIENT_RACE, data = results)
+
+# Perform backward elimination
+model <- step(initial_model, direction = "both")
+summary(model)
+```
+```{r}
+initial_model <- lm(ADVERSE_EVENT_FLAG ~ PATIENT_SEX * PATIENT_ETHNICITY, data = results)
+
+# Perform backward elimination
+model <- step(initial_model, direction = "both")
+summary(model)
+```
+```{r}
+#### PATIENT AGE with ADVERSE_EVENT_FLAG
+temp <- results %>% 
+  filter(!is.na(PATIENT_AGE)) %>%
+  mutate(PATIENT_AGE = as.numeric(PATIENT_AGE))
+temp$AGE_GROUP <- cut(
+  temp$PATIENT_AGE,
+  breaks = seq(0, 100, by = 10),  # adjust range as needed
+  right = FALSE,                 # interval like [50,60)
+  labels = paste(seq(0, 90, 10), seq(9, 99, 10), sep = "-")
+)
+initial_model <- lm(ADVERSE_EVENT_FLAG ~ AGE_GROUP, data = temp)
+
+# Perform backward elimination
+model <- step(initial_model, direction = "both")
+summary(model)
+```
+
+
+```{r with BRAND NAME AND manufacturers}
+# How does the top 5 records for both brands and manufacturers records related to each categories throughout the year
+categories <- unique(flatten_results$CATEGORIES)
+
+### get the list of brands and manufacturers that are in top 5 for each categories
+top_brands_all_categories <- character()
+top_manufacturers_all_categories <- character()
+for (cat in categories) {
+  top_brands <- flatten_results %>%
+    filter(CATEGORIES == cat) %>%
+    count(BRAND_NAME, sort=TRUE) %>%
+    slice_head(n=5) %>%
+    pull(BRAND_NAME)
+
+  top_brands_all_categories <- union(top_brands_all_categories, top_brands)
+}
+for (cat in categories) {
+  top_manufacturers <- flatten_results %>%
+    filter(CATEGORIES == cat) %>%
+    count(MANUFACTURER_D_NAME, sort = TRUE) %>%
+    slice_head(n = 5) %>%
+    pull(MANUFACTURER_D_NAME)
+
+  top_manufacturers_all_categories <- union(top_manufacturers_all_categories, top_manufacturers)
+}
+
+filtered_brands <- flatten_results %>%
+  filter(BRAND_NAME %in% top_brands_all_categories)
+
+filtered_manufacturers <- flatten_results %>%
+  filter(MANUFACTURER_D_NAME %in% top_manufacturers_all_categories)
+```
+
+```{r}
+initial_model <- lm(ADVERSE_EVENT_FLAG ~ BRAND_NAME, data = filtered_brands)
+model <- step(initial_model, direction = "both")
+summary(model)
+```
+```{r}
+initial_model <- lm(ADVERSE_EVENT_FLAG ~ MANUFACTURER_D_NAME, data = filtered_manufacturers)
+model <- step(initial_model, direction = "both")
+summary(model)
+```
+
+
+
+
