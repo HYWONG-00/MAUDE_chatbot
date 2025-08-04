@@ -1,0 +1,361 @@
+anchor,expected_MDR_REPORT_KEY,actual_MDR_REPORT_KEY,correctness
+What are patient gender for report 15161131?,15161131,17189893,False
+What are adverse events for report 18951734?,18951734,17189893,False
+What are patient gender for report 18508366?,18508366,17189893,False
+Which year does we receive report 19699509 ?,19699509,17189893,False
+Which year does we receive report 16233159 ?,16233159,17806243,False
+Which year does we receive report 17867491 ?,17867491,17189893,False
+Which year does we receive report 16569776 ?,16569776,17189893,False
+What are patient gender for report 16444008?,16444008,17393725,False
+What are adverse events for report 15536502?,15536502,17189893,False
+Which year does we receive report 20855499 ?,20855499,17189893,False
+What are adverse events for report 15913398?,15913398,17189893,False
+What are patient gender for report 14165930?,14165930,20798261,False
+Which year does we receive report 16794775 ?,16794775,17189893,False
+What are patient gender for report 15161122?,15161122,17189893,False
+What are patient gender for report 16405926?,16405926,17806243,False
+What are adverse events for report 15348357?,15348357,16196876,False
+Which year does we receive report 18166768 ?,18166768,17189893,False
+What are patient gender for report 15940858?,15940858,17189893,False
+What are adverse events for report 17977512?,17977512,17189893,False
+Which year does we receive report 14046103 ?,14046103,17189893,False
+What are patient gender for report 13900062?,13900062,16196876,False
+What are adverse events for report 20211227?,20211227,17233475,False
+What are patient gender for report 15183671?,15183671,16196876,False
+What are adverse events for report 15590945?,15590945,17189893,False
+What are patient gender for report 15173611?,15173611,17189893,False
+Which year does we receive report 19033448 ?,19033448,17189893,False
+What are adverse events for report 15070973?,15070973,16709899,False
+Which year does we receive report 16714740 ?,16714740,17189893,False
+Which year does we receive report 18885308 ?,18885308,17189893,False
+What are patient gender for report 20672130?,20672130,20798261,False
+What are adverse events for report 20144999?,20144999,17189893,False
+What are patient gender for report 16597066?,16597066,17806243,False
+What are adverse events for report 15099523?,15099523,13999379,False
+Which year does we receive report 13958496 ?,13958496,17189893,False
+What are adverse events for report 16874818?,16874818,15688972,False
+Which year does we receive report 17733022 ?,17733022,17189893,False
+What are adverse events for report 13994601?,13994601,17189893,False
+What are patient gender for report 19771369?,19771369,17189893,False
+What are patient gender for report 20449489?,20449489,13999379,False
+Which year does we receive report 15509612 ?,15509612,17189893,False
+What are patient gender for report 16204679?,16204679,17189893,False
+What are patient gender for report 20192933?,20192933,17233475,False
+What are patient gender for report 17820315?,17820315,17189893,False
+What are patient gender for report 15549137?,15549137,17189893,False
+Which year does we receive report 13868621 ?,13868621,17189893,False
+Which year does we receive report 17440869 ?,17440869,17189893,False
+Which year does we receive report 16467547 ?,16467547,17189893,False
+What are adverse events for report 17686128?,17686128,17189893,False
+Which year does we receive report 19248586 ?,19248586,17189893,False
+What are adverse events for report 18586927?,18586927,17189893,False
+What are adverse events for report 16669357?,16669357,17189893,False
+What are adverse events for report 18612537?,18612537,17393725,False
+What are adverse events for report 19218225?,19218225,17189893,False
+What are patient gender for report 17609913?,17609913,17189893,False
+What are patient gender for report 14186258?,14186258,17189893,False
+What are patient gender for report 19556771?,19556771,16196876,False
+What are patient gender for report 20211227?,20211227,20237342,False
+What are patient gender for report 16309356?,16309356,17189893,False
+What are adverse events for report 15335200?,15335200,17189893,False
+What are adverse events for report 17813728?,17813728,17262437,False
+What are patient gender for report 18093779?,18093779,17189893,False
+What are adverse events for report 15117055?,15117055,17189893,False
+What are patient gender for report 15787899?,15787899,16196876,False
+What are adverse events for report 15160246?,15160246,17189893,False
+What are patient gender for report 15487298?,15487298,16196876,False
+Which year does we receive report 16203831 ?,16203831,20567234,False
+What are patient gender for report 14141942?,14141942,17189893,False
+What are patient gender for report 18408988?,18408988,17189893,False
+What are patient gender for report 18103737?,18103737,17262437,False
+What are patient gender for report 16380765?,16380765,17189893,False
+What are patient gender for report 17652578?,17652578,17189893,False
+Which year does we receive report 13895653 ?,13895653,17189893,False
+What are patient gender for report 19627413?,19627413,17189893,False
+What are adverse events for report 18586132?,18586132,17189893,False
+Which year does we receive report 15914769 ?,15914769,16196876,False
+Which year does we receive report 16222858 ?,16222858,20567234,False
+Which year does we receive report 19371459 ?,19371459,17806243,False
+What are patient gender for report 16329705?,16329705,17189893,False
+What are patient gender for report 15098944?,15098944,16196876,False
+What are adverse events for report 20428678?,20428678,13999379,False
+Which year does we receive report 15136368 ?,15136368,17189893,False
+What are adverse events for report 19673614?,19673614,17262431,False
+What are adverse events for report 13900062?,13900062,15778983,False
+What are patient gender for report 15549345?,15549345,17189893,False
+What are adverse events for report 19199677?,19199677,16196876,False
+What are patient gender for report 16709899?,16709899,17189893,False
+Which year does we receive report 16861102 ?,16861102,15778983,False
+Which year does we receive report 16330633 ?,16330633,17189893,False
+Which year does we receive report 20212233 ?,20212233,17806243,False
+Which year does we receive report 15680716 ?,15680716,17189893,False
+Which year does we receive report 14167568 ?,14167568,17189893,False
+What are patient gender for report 19141500?,19141500,17806243,False
+What are adverse events for report 19084132?,19084132,17189893,False
+What are adverse events for report 19287561?,19287561,17189893,False
+Which year does we receive report 14214998 ?,14214998,15778983,False
+What are patient gender for report 15789372?,15789372,16196876,False
+What are patient gender for report 13895653?,13895653,17189893,False
+Which year does we receive report 14121444 ?,14121444,17189893,False
+What are adverse events for report 20449489?,20449489,13999379,False
+What are adverse events for report 19610669?,19610669,17189893,False
+What are adverse events for report 20545256?,20545256,16196876,False
+What are patient gender for report 20344462?,20344462,16196876,False
+Which year does we receive report 16500142 ?,16500142,17189893,False
+Which year does we receive report 18725381 ?,18725381,17189893,False
+What are adverse events for report 15742503?,15742503,17189893,False
+What are adverse events for report 15127790?,15127790,17189893,False
+What are adverse events for report 20332032?,20332032,13999379,False
+Which year does we receive report 15849963 ?,15849963,17179993,False
+Which year does we receive report 16416086 ?,16416086,17189893,False
+What are adverse events for report 16378228?,16378228,16196876,False
+Which year does we receive report 13933217 ?,13933217,17189893,False
+What are adverse events for report 16405926?,16405926,17262431,False
+What are patient gender for report 13912035?,13912035,17189893,False
+What are adverse events for report 19521637?,19521637,17262437,False
+What are adverse events for report 20992960?,20992960,17189893,False
+Which year does we receive report 16127185 ?,16127185,17189893,False
+Which year does we receive report 19339493 ?,19339493,17189893,False
+Which year does we receive report 20105347 ?,20105347,17189893,False
+What are adverse events for report 15202664?,15202664,20798261,False
+Which year does we receive report 18647075 ?,18647075,17189893,False
+What are patient gender for report 17867491?,17867491,17189893,False
+What are adverse events for report 19340424?,19340424,17189893,False
+Which year does we receive report 20673478 ?,20673478,16196876,False
+What are patient gender for report 15995207?,15995207,16196876,False
+What are patient gender for report 14193890?,14193890,17189893,False
+What are adverse events for report 17262584?,17262584,15688972,False
+Which year does we receive report 19674327 ?,19674327,17189893,False
+What are adverse events for report 17698973?,17698973,15778983,False
+Which year does we receive report 17711308 ?,17711308,17189893,False
+What are patient gender for report 18841920?,18841920,17806243,False
+What are patient gender for report 16874818?,16874818,15688972,False
+Which year does we receive report 15098944 ?,15098944,15778983,False
+What are adverse events for report 13971947?,13971947,16196876,False
+Which year does we receive report 18061584 ?,18061584,17189893,False
+Which year does we receive report 20765408 ?,20765408,17189893,False
+What are patient gender for report 15946007?,15946007,20559794,False
+What are adverse events for report 17334861?,17334861,16196876,False
+What are adverse events for report 20107029?,20107029,17262437,False
+What are adverse events for report 17262762?,17262762,17298782,False
+What are adverse events for report 16989706?,16989706,16196876,False
+What are adverse events for report 17119503?,17119503,17189893,False
+What are adverse events for report 15287080?,15287080,17189893,False
+What are adverse events for report 20509695?,20509695,16196876,False
+What are adverse events for report 15051813?,15051813,13999379,False
+What are patient gender for report 18450278?,18450278,17189893,False
+Which year does we receive report 20186580 ?,20186580,20567234,False
+What are adverse events for report 15728841?,15728841,17189893,False
+What are patient gender for report 16572800?,16572800,20798261,False
+Which year does we receive report 18904306 ?,18904306,17189893,False
+What are patient gender for report 14103640?,14103640,17189893,False
+What are patient gender for report 16109261?,16109261,20798261,False
+Which year does we receive report 20672130 ?,20672130,13999379,False
+What are adverse events for report 20995371?,20995371,16196876,False
+What are patient gender for report 15130036?,15130036,17189893,False
+What are patient gender for report 19665151?,19665151,17393725,False
+What are adverse events for report 16809706?,16809706,17189893,False
+What are adverse events for report 16109261?,16109261,17189893,False
+What are adverse events for report 17596917?,17596917,17189893,False
+What are patient gender for report 17611289?,17611289,17189893,False
+Which year does we receive report 17684001 ?,17684001,17806243,False
+Which year does we receive report 15229486 ?,15229486,17189893,False
+What are adverse events for report 19199693?,19199693,17179993,False
+What are patient gender for report 19276024?,19276024,17806243,False
+Which year does we receive report 19277911 ?,19277911,17189893,False
+Which year does we receive report 19199693 ?,19199693,17179993,False
+What are adverse events for report 19996356?,19996356,17189893,False
+What are patient gender for report 15316681?,15316681,16196876,False
+Which year does we receive report 16809412 ?,16809412,17189893,False
+Which year does we receive report 19276898 ?,19276898,17189893,False
+Which year does we receive report 14191922 ?,14191922,17189893,False
+What are adverse events for report 17484576?,17484576,17189893,False
+What are patient gender for report 16864653?,16864653,17189893,False
+What are patient gender for report 15680761?,15680761,16196876,False
+What are patient gender for report 17302520?,17302520,20523534,False
+What are patient gender for report 15122916?,15122916,17189893,False
+What are adverse events for report 15800935?,15800935,17189893,False
+Which year does we receive report 18036895 ?,18036895,17189893,False
+What are adverse events for report 13912035?,13912035,17189893,False
+What are adverse events for report 15401206?,15401206,17189893,False
+What are patient gender for report 20468091?,20468091,16196876,False
+What are adverse events for report 15837723?,15837723,17189893,False
+What are patient gender for report 19449164?,19449164,17189893,False
+What are patient gender for report 15896639?,15896639,17189893,False
+Which year does we receive report 15099536 ?,15099536,17179993,False
+Which year does we receive report 16141566 ?,16141566,17189893,False
+What are adverse events for report 15487298?,15487298,16196876,False
+What are patient gender for report 15688972?,15688972,16196876,False
+What are adverse events for report 15253110?,15253110,17189893,False
+What are patient gender for report 15373363?,15373363,17189893,False
+What are patient gender for report 16282562?,16282562,17189893,False
+What are adverse events for report 20609129?,20609129,13999379,False
+What are patient gender for report 18164917?,18164917,17189893,False
+Which year does we receive report 20739262 ?,20739262,17189893,False
+What are adverse events for report 16428640?,16428640,17189893,False
+What are patient gender for report 20008622?,20008622,20567234,False
+Which year does we receive report 20016969 ?,20016969,17189893,False
+What are patient gender for report 17298782?,17298782,17298782,True
+What are adverse events for report 17612904?,17612904,17189893,False
+Which year does we receive report 19486095 ?,19486095,17189893,False
+What are adverse events for report 15987570?,15987570,17189893,False
+Which year does we receive report 15503653 ?,15503653,17189893,False
+Which year does we receive report 17238884 ?,17238884,15778983,False
+What are patient gender for report 13856588?,13856588,17189893,False
+What are adverse events for report 14011026?,14011026,13999379,False
+Which year does we receive report 15487298 ?,15487298,17189893,False
+Which year does we receive report 17397233 ?,17397233,17189893,False
+Which year does we receive report 20237629 ?,20237629,17189893,False
+Which year does we receive report 19287561 ?,19287561,17189893,False
+What are adverse events for report 16183797?,16183797,16196876,False
+What are patient gender for report 16621307?,16621307,17189893,False
+Which year does we receive report 20210388 ?,20210388,20234982,False
+What are patient gender for report 15070976?,15070976,16196876,False
+What are adverse events for report 15202738?,15202738,17189893,False
+What are patient gender for report 19041630?,19041630,17806243,False
+Which year does we receive report 15400109 ?,15400109,17189893,False
+What are patient gender for report 17395597?,17395597,17189893,False
+What are adverse events for report 15161122?,15161122,17189893,False
+What are patient gender for report 16468634?,16468634,17189893,False
+Which year does we receive report 16246802 ?,16246802,17189893,False
+Which year does we receive report 15096235 ?,15096235,16196876,False
+What are patient gender for report 16541703?,16541703,17189893,False
+Which year does we receive report 20652797 ?,20652797,17189893,False
+Which year does we receive report 20170511 ?,20170511,20234982,False
+What are adverse events for report 19010377?,19010377,17189893,False
+What are patient gender for report 17238884?,17238884,15778983,False
+Which year does we receive report 17884613 ?,17884613,17806243,False
+What are adverse events for report 16443139?,16443139,17189893,False
+What are adverse events for report 20964598?,20964598,17189893,False
+What are patient gender for report 16216197?,16216197,17189893,False
+What are patient gender for report 16834917?,16834917,17806243,False
+What are adverse events for report 19031398?,19031398,17189893,False
+What are adverse events for report 17233466?,17233466,17189893,False
+What are patient gender for report 14167568?,14167568,16196876,False
+Which year does we receive report 19220436 ?,19220436,17189893,False
+Which year does we receive report 19145338 ?,19145338,17806243,False
+What are adverse events for report 13840052?,13840052,17806243,False
+What are patient gender for report 19211579?,19211579,17189893,False
+Which year does we receive report 18962473 ?,18962473,17189893,False
+What are adverse events for report 13958496?,13958496,16196876,False
+What are patient gender for report 19996356?,19996356,17189893,False
+What are adverse events for report 17568409?,17568409,17189893,False
+Which year does we receive report 15235600 ?,15235600,17189893,False
+Which year does we receive report 15876735 ?,15876735,17189893,False
+What are patient gender for report 19646712?,19646712,17189893,False
+Which year does we receive report 16583326 ?,16583326,17189893,False
+What are patient gender for report 17240914?,17240914,17189893,False
+Which year does we receive report 19276725 ?,19276725,17189893,False
+What are adverse events for report 17419965?,17419965,17189893,False
+What are adverse events for report 13955611?,13955611,17189893,False
+Which year does we receive report 20560174 ?,20560174,16196876,False
+What are patient gender for report 18725381?,18725381,17189893,False
+Which year does we receive report 17438259 ?,17438259,17189893,False
+What are patient gender for report 16222902?,16222902,17189893,False
+Which year does we receive report 20900021 ?,20900021,17189893,False
+What are adverse events for report 15536520?,15536520,17189893,False
+What are patient gender for report 17352548?,17352548,17393725,False
+What are adverse events for report 16861102?,16861102,15778983,False
+Which year does we receive report 19060364 ?,19060364,17189893,False
+What are patient gender for report 19360795?,19360795,17189893,False
+What are adverse events for report 15488574?,15488574,16196876,False
+What are patient gender for report 19717988?,19717988,17189893,False
+Which year does we receive report 18664188 ?,18664188,17189893,False
+What are patient gender for report 18993527?,18993527,17806243,False
+Which year does we receive report 19010377 ?,19010377,17189893,False
+What are patient gender for report 19699509?,19699509,17189893,False
+Which year does we receive report 18586132 ?,18586132,17189893,False
+What are patient gender for report 18836492?,18836492,17189893,False
+What are patient gender for report 20064498?,20064498,17189893,False
+What are adverse events for report 15742856?,15742856,17189893,False
+Which year does we receive report 17904304 ?,17904304,17189893,False
+What are adverse events for report 20858289?,20858289,13999379,False
+What are patient gender for report 18736956?,18736956,17189893,False
+What are patient gender for report 20050774?,20050774,16196876,False
+What are adverse events for report 14187933?,14187933,15778983,False
+What are adverse events for report 16536294?,16536294,17189893,False
+What are patient gender for report 15578708?,15578708,17189893,False
+Which year does we receive report 16989381 ?,16989381,16196876,False
+What are patient gender for report 15136368?,15136368,17189893,False
+Which year does we receive report 20709383 ?,20709383,15778983,False
+Which year does we receive report 15173611 ?,15173611,17189893,False
+Which year does we receive report 15429367 ?,15429367,17189893,False
+What are adverse events for report 16645726?,16645726,17189893,False
+What are patient gender for report 16816364?,16816364,17287346,False
+What are patient gender for report 19673614?,19673614,17393725,False
+Which year does we receive report 16305571 ?,16305571,17189893,False
+What are patient gender for report 15499519?,15499519,16196876,False
+What are adverse events for report 16730294?,16730294,17189893,False
+What are adverse events for report 20951121?,20951121,13999379,False
+What are adverse events for report 16843850?,16843850,17189893,False
+What are patient gender for report 16311201?,16311201,17287346,False
+What are patient gender for report 15335200?,15335200,17233475,False
+What are patient gender for report 15547130?,15547130,17189893,False
+What are adverse events for report 19376915?,19376915,17189893,False
+What are adverse events for report 15750818?,15750818,17189893,False
+Which year does we receive report 17258080 ?,17258080,17189893,False
+What are adverse events for report 19141500?,19141500,17967057,False
+What are adverse events for report 18078803?,18078803,17189893,False
+What are patient gender for report 18612537?,18612537,17393725,False
+What are adverse events for report 20099214?,20099214,17189893,False
+Which year does we receive report 15695074 ?,15695074,16196876,False
+What are patient gender for report 19190316?,19190316,17189893,False
+What are patient gender for report 18604311?,18604311,17189893,False
+What are adverse events for report 15537649?,15537649,17189893,False
+What are adverse events for report 16689484?,16689484,16196876,False
+What are patient gender for report 20995521?,20995521,17189893,False
+Which year does we receive report 15983426 ?,15983426,20234982,False
+What are patient gender for report 19153646?,19153646,17806243,False
+What are adverse events for report 15092585?,15092585,13999379,False
+Which year does we receive report 17378530 ?,17378530,17189893,False
+What are patient gender for report 16444197?,16444197,17189893,False
+What are adverse events for report 14160463?,14160463,17189893,False
+What are patient gender for report 16645726?,16645726,20567234,False
+What are adverse events for report 17132833?,17132833,17189893,False
+What are adverse events for report 16311573?,16311573,17189893,False
+Which year does we receive report 14021372 ?,14021372,15688972,False
+What are patient gender for report 15832534?,15832534,17189893,False
+What are adverse events for report 15926322?,15926322,17298782,False
+Which year does we receive report 18737061 ?,18737061,17189893,False
+What are adverse events for report 15096187?,15096187,16196876,False
+What are adverse events for report 19646712?,19646712,17189893,False
+What are adverse events for report 16366308?,16366308,17189893,False
+Which year does we receive report 17652578 ?,17652578,17189893,False
+Which year does we receive report 18644803 ?,18644803,17189893,False
+What are adverse events for report 18144589?,18144589,17189893,False
+What are patient gender for report 15618886?,15618886,17189893,False
+Which year does we receive report 15130036 ?,15130036,17189893,False
+What are patient gender for report 17671692?,17671692,17189893,False
+What are patient gender for report 17371994?,17371994,17287346,False
+What are adverse events for report 20301732?,20301732,13999379,False
+What are patient gender for report 20449495?,20449495,20709383,False
+Which year does we receive report 19984239 ?,19984239,17189893,False
+Which year does we receive report 19361294 ?,19361294,17189893,False
+What are adverse events for report 18904306?,18904306,17189893,False
+Which year does we receive report 20545256 ?,20545256,17189893,False
+Which year does we receive report 15121653 ?,15121653,17189893,False
+What are adverse events for report 15456438?,15456438,17189893,False
+Which year does we receive report 17438260 ?,17438260,17189893,False
+Which year does we receive report 15750818 ?,15750818,17189893,False
+Which year does we receive report 20246173 ?,20246173,17189893,False
+What are patient gender for report 15742856?,15742856,17189893,False
+What are adverse events for report 16901215?,16901215,17189893,False
+What are adverse events for report 19459939?,19459939,17189893,False
+Which year does we receive report 13878326 ?,13878326,16196876,False
+What are patient gender for report 19104803?,19104803,17189893,False
+What are patient gender for report 17703514?,17703514,17233475,False
+What are adverse events for report 18523960?,18523960,17189893,False
+What are adverse events for report 20050774?,20050774,17698973,False
+What are patient gender for report 19621794?,19621794,17189893,False
+What are adverse events for report 18737066?,18737066,17189893,False
+What are patient gender for report 18636692?,18636692,17189893,False
+What are adverse events for report 15316629?,15316629,17189893,False
+What are patient gender for report 19123144?,19123144,20567234,False
+Which year does we receive report 16405855 ?,16405855,17189893,False
+Which year does we receive report 20099214 ?,20099214,17189893,False
+What are patient gender for report 15611283?,15611283,17189893,False
+What are patient gender for report 18885308?,18885308,17189893,False
+What are adverse events for report 16800514?,16800514,17189893,False
+What are adverse events for report 20234982?,20234982,13999379,False
+Which year does we receive report 17240914 ?,17240914,17189893,False
+What are adverse events for report 19350103?,19350103,17189893,False
