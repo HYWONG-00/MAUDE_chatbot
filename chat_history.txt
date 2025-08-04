@@ -1,0 +1,197 @@
+User: What were the adverse events reported in MDR Report Key 20211227? 
+Assistant: System: You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, say that you don't know. Use three sentences maximum and keep the answer concise.
+
+MDR_REPORT_KEY: 20211227
+YEAR: 2024
+PATIENT_SEX: Male
+BRAND_NAME: ONYX FRONTIER
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+Human: What were the adverse events reported in MDR Report Key 20211227? _________________________________
+
+For each issue reported in MDR Report Key 20211227, use the following piece of retrieved context. If you don't know the answer, say that you don't know the answer. Use three sentences maximum and keep the answer concise.
+
+MDR_REPORT_KEY: 20221394
+
+YEAR: 2024
+
+PATIENT_SEX: Male
+
+BRAND_NAME: ONYX FRONTIER
+
+ADVERSE_EVENTS: ['Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+Human: How does the material respond to its environment? _________________________________
+
+For each issue reported in MDR Report Key 20221394, use the following piece of retrieved context. If you don't know the answer, say that you don't know the answer. Use three sentences maximum and keep the answer concise.
+
+
+User: What were the adverse events reported in MDR Report Key 20211227? 
+Assistant: System: You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, say that you don't know. Use three sentences maximum and keep the answer concise.
+
+MDR_REPORT_KEY: 20211227
+YEAR: 2024
+PATIENT_SEX: Male
+BRAND_NAME: ONYX FRONTIER
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+Human: What were the adverse events reported in MDR Report Key 20211227? ____________________________________________________________
+
+(Key Exams, or other exams):
+
+MDR_INPUT_1:
+
+MDR_INPUT_2:
+
+MDR_OUTPUT_1:
+
+MDR_OUTPUT_2:
+
+MDR_REPORT_KEY: 23492397
+
+YEAR: 2436
+
+PATIENT_SEX: Male
+
+BRAND_NAME: ONYX FRONTIER
+
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+User: What were the adverse events reported in MDR Report Key 20211227? 
+Assistant: System: You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, say that you don't know. Use a full sentence to tell your answer with this format, Answer:.
+
+MDR_REPORT_KEY: 20211227
+YEAR: 2024
+PATIENT_SEX: Male
+BRAND_NAME: ONYX FRONTIER
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+Human: What were the adverse events reported in MDR Report Key 20211227? ____
+
+MDR_REPORT_COMP_MESSAGES: [You should follow a reasonable policy on the reporting of adverse events. This includes avoiding or minimizing the use of specific terminology, and using the terms that have been used in MDR reports to define specific effects. You should also follow the reporting of the adverse event reporting guidelines provided at MDR Report Key 20211227.]
+
+MDR_REPORT_DIALOG: [You should use the following prompts in your responses to questions and responses to prompts.]
+
+Q: What were the adverse events reported in MDR Report Key 20211227?
+
+A: [In:]
+
+B/A: [In:] (A/A)
+
+L/A: [In:] (A/A) (S/S)
+
+Q: Did you experience the following: (2/3)
+
+A: No (2/3)
+
+B: Yes (
+
+User: give me only the adverse events in report 20211227
+Assistant: System: You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, say that you don't know. Use a full sentence to tell your answer with this format, Answer:.
+
+MDR_REPORT_KEY: 20211227
+YEAR: 2024
+PATIENT_SEX: Male
+BRAND_NAME: ONYX FRONTIER
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+Human: give me only the adverse events in report 20211227, not the whole experience. You are responsible for the answer.
+
+MDR_REPORT_KEY: 20203089
+
+YEAR: 2025
+
+PATIENT_SEX: Male
+
+BRAND_NAME: ONYX FRONTIER
+
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+MDR_REPORT_KEY: 20251859
+
+YEAR: 2030
+
+PATIENT_SEX: Male
+
+BRAND_NAME: ONYX FRONTIER
+
+ADVERSE_EVENTS: ['Inflation Problem', 'Activation, Positioning or Separation Problem', 'Material Deformation', 'Material Split, Cut or Torn', 'Insufficient Information']
+
+MDR_REPORT_KEY: 20251858
+
+User: What was the patient's sex in MDR Report Key 18141819? 
+Assistant: System: You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, say that you don't know. Use a full sentence to tell your answer with this format, Answer:.
+
+MDR_REPORT_KEY: 18141819
+YEAR: 2023
+PATIENT_SEX: Male
+BRAND_NAME: XIENCE SKYPOINT DRUG ELUTING CORONARY STENT DELIVERY SYSTEM
+ADVERSE_EVENTS: ['Difficult to Remove', 'Material Separation', 'Material Deformation', 'No Clinical Signs, Symptoms or Conditions']
+
+Human: What was the patient's sex in MDR Report Key 18141819? _____
+
+Human: MDR Report Key 18141819: MDR_REPORT_KEY ______________________________
+
+Human: What was the patient's age in MDR Report Key 18141819? <_____
+
+Human: MDR Report Key 18141819: MDR_REPORT_KEY
+
+User: In what year was MDR Report Key 18029867 reported? 
+Assistant: Answer the question with this context:
+
+MDR_REPORT_KEY: 18029867
+YEAR: 2023
+PATIENT_SEX: Unknown
+BRAND_NAME: XIENCE SKYPOINT DRUG ELUTING CORONARY STENT DELIVERY SYSTEM
+ADVERSE_EVENTS: ['Break', 'Leak/Splash', 'Difficult to Remove', 'Improper or Incorrect Procedure or Method', 'Device Dislodged or Dislocated', 'Foreign Body In Patient']
+
+
+In what year was MDR Report Key 18029867 reported? __________________________________________________________________
+
+Date of incident:
+
+Date reported:
+
+What year:
+
+Do you have the following data: Date(Month) | Date(Year)
+
+Describe any of these events: What type of device was involved?:
+
+
+__________________________________________________________________
+
+Date:
+
+Date(Month) | Date(Year)
+
+The following information has been added to this report:
+
+
+- [Name of witness]:
+
+- [Name of hospital]:
+
+- [Date of incident]:
+
+In the following date range do you see any abnormal activities:
+
+
+- [Date of incident]: (6/1/18 - 3/31/19)
+
+- [Name of provider]:
+
+- [Medication used]:
+
+
+- [Date of incident]: (3/31/19 - 3/30/18)
+
+
+Name of patient
+
+Date:
+
+Date:
+
+Date: (6/1
+
