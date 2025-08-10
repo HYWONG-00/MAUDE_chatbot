@@ -45,7 +45,9 @@ load_dotenv()
 
 import os
 from huggingface_hub import login
-HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+### this is for streamlit cloud
+HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
+# HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 login(token=HUGGINGFACE_TOKEN) 
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
