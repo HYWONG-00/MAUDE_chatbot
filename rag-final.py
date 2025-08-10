@@ -46,8 +46,8 @@ load_dotenv()
 import os
 from huggingface_hub import login
 ### this is for streamlit cloud
-# HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
-HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
+# HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 login(token=HUGGINGFACE_TOKEN) 
 
 os.environ["CHROMA_DISABLE_WATCH"] = "true"
