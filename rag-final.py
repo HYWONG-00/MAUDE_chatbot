@@ -22,25 +22,21 @@ from langchain_chroma import Chroma
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.prompts import PromptTemplate
-
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
 from typing import Callable
 
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, pipeline
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 from peft import LoraConfig, get_peft_model
 from langchain.llms import HuggingFacePipeline
-from langchain.chains import RetrievalQA
 
 from dotenv import load_dotenv
 load_dotenv()
 
-
 import os
 from huggingface_hub import login
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
-login(token=HUGGINGFACE_TOKEN)
+login(token=HUGGINGFACE_TOKEN) 
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("DEVICE", DEVICE)
@@ -49,6 +45,7 @@ TRANSFORMER_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 ## for chroma vector database
 CHROMA_PATH = "chroma"
 COLLECTION_PRETRAINED_GISTPATH = "langchain-pretrained-GIST"
+CLIENT = chromadb.PersistentClient(path=CHROMA_PATH)
 
 class MyEmbeddingFunction:
     def __init__(self, embedding_model):
@@ -60,21 +57,19 @@ class MyEmbeddingFunction:
 
     def embed_query(self, input):
         return self.embedding_model.encode(input, convert_to_tensor=False).tolist()
-    
+
     def embed_documents(self, input):
         return self.embedding_model.encode(input, convert_to_tensor=False).tolist()
-        
+
 def creating_chromadb(alldata):
     print("Generating the Chroma vector DB....")
 
     embeddings = SentenceTransformer(TRANSFORMER_MODEL, device=DEVICE)
-    
+
     embedding_function = MyEmbeddingFunction(embeddings)
 
-    client = chromadb.PersistentClient(path=CHROMA_PATH)
-
-    client.delete_collection(name=COLLECTION_PRETRAINED_GISTPATH)
-    collection = client.create_collection(name=COLLECTION_PRETRAINED_GISTPATH, embedding_function=embedding_function)
+    CLIENT.delete_collection(name=COLLECTION_PRETRAINED_GISTPATH)
+    collection = CLIENT.create_collection(name=COLLECTION_PRETRAINED_GISTPATH, embedding_function=embedding_function)
 
     documents = []
     ### Save all reports
@@ -84,7 +79,7 @@ def creating_chromadb(alldata):
             f"YEAR: {int(row['YEAR'])}\n"
             f"PATIENT_SEX: {row['PATIENT_SEX']}\n"
             f"BRAND_NAME: {row['BRAND_NAME']}\n"
-            f"ADVERSE_EVENTS: {str(row["ADVERSE_EVENTS"])}\n"
+            f"ADVERSE_EVENTS: {str(row['EVENTS'])}\n"
         )
 
         metadata = {
@@ -153,7 +148,7 @@ def creating_chromadb(alldata):
     #     ids=chroma_ids,
     #     documents=chroma_documents_content,
     #     metadatas=chroma_metadatas,
-    #     embeddings=None 
+    #     embeddings=None
     # )
 
     # batch_count = 0
@@ -177,8 +172,7 @@ class CustomRetriever(BaseRetriever):
 
     def _get_relevant_documents(self, query: str) -> list[Document]:
         # Optional: Extract a doc_id from query
-        client = chromadb.PersistentClient(path=CHROMA_PATH)
-        collection = client.get_collection(name=COLLECTION_PRETRAINED_GISTPATH)
+        collection = CLIENT.get_collection(name=COLLECTION_PRETRAINED_GISTPATH)
 
         doc_id = None
         match = re.search(r"\b\d{8}\b", query)
@@ -206,9 +200,10 @@ class CustomRetriever(BaseRetriever):
 
         retriever = self.vectorstore.as_retriever(
             search_type="similarity",
-            search_kwargs={"k": 1}
+            search_kwargs={"k": 10}
         )
         return retriever.get_relevant_documents(query)
+
 
 ### Metadata filtering
 # results = collection.get(
@@ -220,122 +215,98 @@ class CustomRetriever(BaseRetriever):
 #     include=["documents", "metadatas"]
 # )
     
-alldata = pd.read_excel('for rag.xlsx', sheet_name="Sheet1")
-# print("Creating Chroma VectorDB....")
-# creating_chromadb(alldata)
-# print("Done....")
-
-custom_retriever = None
-print("Getting the collection....")
-tqdm.pandas(desc="my bar!")
-client = chromadb.PersistentClient(path=CHROMA_PATH)
-collection = client.get_collection(name=COLLECTION_PRETRAINED_GISTPATH)
-docs = collection.get() 
-# print(type(docs), "docs", docs) 
-print(f"\nTotal number of documents: {collection.count()}")
 
 #############################################################
 #### Building the interactive RAG chatbot with fine-tuned GPT-2 LLM and allMiniLM sentence transformer
 print("Building RAG chatbot.....")
 
-### set a title for chatbot only
-st.title("RAG chatbot for coronary drug-eluting stent adverse event analysis")
-
-############ Done - Setting up fine-tuned GPT-2 model
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.bfloat16
-)
-# Apply LoRA
-lora_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    target_modules=["c_attn", "c_proj"],
-    lora_dropout=0.1,
-    bias="none",
-    task_type="CAUSAL_LM",
-)
-model_id = "fine_tuned_gpt2"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-model = AutoModelForCausalLM.from_pretrained(model_id,
-                                             quantization_config= bnb_config,
-                                             device_map="cpu") # {"" : 0}
-model = get_peft_model(model, lora_config)
-
-pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=200)
-llm = HuggingFacePipeline(pipeline=pipe)
-
-# Add padding token if not present
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
-    model.config.pad_token_id = model.config.eos_token_id
-############ Done - Loading fine-tuned GPT-2 model
-
-# Initialize chat history
-if "history" not in st.session_state:
-    st.session_state.history = []
-if "retriever" not in st.session_state:
-    st.session_state.retriever = None
-
-data = None  
-# Check if data is loaded before processing
-if data is None:
-    embeddings = SentenceTransformer(TRANSFORMER_MODEL) # , device=DEVICE
-    embedding_function = MyEmbeddingFunction(embeddings)
-    
-    ### setup database, embed the whole original dataset with my embedding model
-    vectorstore = Chroma(
-        collection_name=COLLECTION_PRETRAINED_GISTPATH,  
-        embedding_function=embedding_function,
-        persist_directory=CHROMA_PATH        
+@st.cache_resource
+def setup_rag(_llm, _vectorstore):
+    system_prompt = (
+        "You are an assistant for question-answering tasks. "
+        "Use the following pieces of retrieved context to answer "
+        "the question. If you don't know the answer, say that you "
+        "don't know. Tell me the answer directly.\n\n"
+        "{context}"
     )
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("human", "{input}")
+    ])
+    question_answer_chain = create_stuff_documents_chain(llm=_llm, prompt=prompt)
+    custom_retriever = CustomRetriever(vectorstore=_vectorstore)
+    return create_retrieval_chain(custom_retriever, question_answer_chain)
 
-    query = st.chat_input("Ask me something...")
-    ### set up the retriever - if you look into CustomRetriever, using SAME sentence transformer as the one for encoding dataset
-    custom_retriever = CustomRetriever(vectorstore=vectorstore)
+# Function to extract answer
+def get_answer(text):
+    import re
+    match = re.search(r"Human:.*?Answer:\s*(.*?)(?:\n|$)", text, re.DOTALL)
+    return match.group(1).strip() if match else text.strip()
 
-    st.success("Done")
+def main():
+  ############ Done - Setting up fine-tuned GPT-2 model
+  model_id = "fine_tuned_llama32"
+  tokenizer = AutoTokenizer.from_pretrained(model_id)
+  model = AutoModelForCausalLM.from_pretrained(model_id, device_map="cpu")
 
-# Show previous chat messages
-for msg in st.session_state.history:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+  pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=200)
+  llm = HuggingFacePipeline(pipeline=pipe)
 
-if query:  # Ensure retriever is defined
-    # Show user message instantly
-    st.session_state.history.append({"role": "user", "content": query})
-    with st.chat_message("user"):
-        st.markdown(query)
+  # Add padding token if not present
+  if tokenizer.pad_token is None:
+      tokenizer.pad_token = tokenizer.eos_token
+      model.config.pad_token_id = model.config.eos_token_id
+  ############ Done - Loading fine-tuned GPT-2 model
 
-    # Display "thinking" message from assistant
-    with st.chat_message("assistant"):
-        response_placeholder = st.empty() # st.spinner()
-        response_placeholder.markdown("_Thinking..._") 
+  data = None
+  # Check if data is loaded before processing
+  if data is None:
+      embeddings = SentenceTransformer(TRANSFORMER_MODEL) # , device=DEVICE
+      embedding_function = MyEmbeddingFunction(embeddings)
 
-        # === Build the full RAG chain here ===
-        print("User query:", query) 
+      ### setup database, embed the whole original dataset with my embedding model
+      vectorstore = Chroma(
+          collection_name=COLLECTION_PRETRAINED_GISTPATH,
+          embedding_function=embedding_function,
+          persist_directory=CHROMA_PATH
+      )
 
-        rag_chain = RetrievalQA.from_chain_type(
-            llm=llm,
-            retriever=custom_retriever
-        )
+      st.success("Done")
 
-        response = rag_chain.run(query)
+  ### set a title for chatbot only
+  st.title("RAG chatbot for coronary drug-eluting stent adverse event analysis")
 
-        # Update placeholder with real response
-        print("response", response)
-        response_placeholder.markdown(response['answer'])
+  if "history" not in st.session_state:
+        st.session_state.history = []
 
-        # Store the assistant's response in history
-        st.session_state.history.append({"role": "assistant", "content": response['answer']})
+  rag_chain = setup_rag(llm, vectorstore)
 
-        # Save user query and assistant response to a text file
-        with open("chat_history.txt", "a", encoding="utf-8") as f:
-            f.write("User: " + query + "\n")
-            f.write("Assistant: " + response["answer"] + "\n\n")
+  for message in st.session_state.history:
+      with st.chat_message(message["role"]):
+          st.markdown(message["content"])
 
+  if query := st.chat_input("Enter your query"):
+        st.session_state.history.append({"role": "user", "content": query})
+        with st.chat_message("user"):
+            st.markdown(query)
+
+        with st.chat_message("assistant"):
+            response_placeholder = st.empty()
+            response_placeholder.markdown("_Thinking..._")
+
+            try:
+                # Get the response from the RAG chain
+                response = rag_chain.invoke({"input": query})
+                answer = get_answer(response["answer"])
+                response_placeholder.markdown(f"**Answer:** {answer}")
+                # Store the assistant's response
+                st.session_state.history.append({"role": "assistant", "content": answer})
+            except Exception as e:
+                response_placeholder.markdown(f"❌ Error: {str(e)}")
+                st.session_state.history.append({"role": "assistant", "content": f"❌ Error: {str(e)}"})
+
+if __name__ == "__main__":
+    main()
 
 ### Run streamlit app
 ### python -m streamlit run rag-final.py
@@ -349,6 +320,14 @@ if query:  # Ensure retriever is defined
 # Can you list all the adverse events were reported across all MDR reports?
 # 5. How many MDR reports are from 2024?
 # Give me random 5 reports about thrombosis. List in format, (id, gender, year)
+
+
+
+# what is the adverse event for 18138978
+# can you tell me the reports received for male from 2022 to 2024
+# https://maudechatbot-ag9lsg4bvwnyzmwk3bwgch.streamlit.app/
+
+
 
 
 
