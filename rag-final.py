@@ -46,9 +46,11 @@ load_dotenv()
 import os
 from huggingface_hub import login
 ### this is for streamlit cloud
-HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
-# HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+# HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
+HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 login(token=HUGGINGFACE_TOKEN) 
+
+os.environ["CHROMA_DISABLE_WATCH"] = "true"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("DEVICE", DEVICE)
@@ -57,11 +59,7 @@ TRANSFORMER_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 ## for chroma vector database
 CHROMA_PATH = "chroma"
 COLLECTION_PRETRAINED_GISTPATH = "langchain-pretrained-GIST"
-CLIENT = chromadb.PersistentClient(settings=Settings(
-                                    is_persistent=True,
-                                    anonymized_telemetry=False,
-                                    allow_reset=True
-                                ), path=CHROMA_PATH)
+CLIENT = chromadb.PersistentClient(path=CHROMA_PATH)
 
 class MyEmbeddingFunction:
     def __init__(self, embedding_model):
@@ -260,6 +258,8 @@ def get_answer(text):
     return match.group(1).strip() if match else text.strip()
 
 def main():
+  alldata = pd.read_excel("for rag.xlsx", sheet_name="Sheet1")
+  creating_chromadb(alldata)
   ############ Done - Setting up fine-tuned GPT-2 model
   model_id = "fine_tuned_llama32"
   tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -282,9 +282,9 @@ def main():
 
       ### setup database, embed the whole original dataset with my embedding model
       vectorstore = Chroma(
-          client=CLIENT,
             collection_name=COLLECTION_PRETRAINED_GISTPATH,
-            embedding_function=embedding_function
+            embedding_function=embedding_function,
+            persist_directory=CHROMA_PATH
       )
 
       st.success("Done")
