@@ -234,22 +234,22 @@ class CustomRetriever(BaseRetriever):
 #### Building the interactive RAG chatbot with fine-tuned GPT-2 LLM and allMiniLM sentence transformer
 print("Building RAG chatbot.....")
 
-@st.cache_resource
-def setup_rag(_llm, _vectorstore):
-    system_prompt = (
-        "You are an assistant for question-answering tasks. "
-        "Use the following pieces of retrieved context to answer "
-        "the question. If you don't know the answer, say that you "
-        "don't know. Tell me the answer directly.\n\n"
-        "{context}"
-    )
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", system_prompt),
-        ("human", "{input}")
-    ])
-    question_answer_chain = create_stuff_documents_chain(llm=_llm, prompt=prompt)
-    custom_retriever = CustomRetriever(vectorstore=_vectorstore)
-    return create_retrieval_chain(custom_retriever, question_answer_chain)
+# @st.cache_resource
+# def setup_rag(_llm, _vectorstore):
+#     system_prompt = (
+#         "You are an assistant for question-answering tasks. "
+#         "Use the following pieces of retrieved context to answer "
+#         "the question. If you don't know the answer, say that you "
+#         "don't know. Tell me the answer directly.\n\n"
+#         "{context}"
+#     )
+#     prompt = ChatPromptTemplate.from_messages([
+#         ("system", system_prompt),
+#         ("human", "{input}")
+#     ])
+#     question_answer_chain = create_stuff_documents_chain(llm=_llm, prompt=prompt)
+#     custom_retriever = CustomRetriever(vectorstore=_vectorstore)
+#     return create_retrieval_chain(custom_retriever, question_answer_chain)
 
 # Function to extract answer
 def get_answer(text):
@@ -295,7 +295,23 @@ def main():
   if "history" not in st.session_state:
         st.session_state.history = []
 
-  rag_chain = setup_rag(llm, vectorstore)
+
+
+  system_prompt = (
+        "You are an assistant for question-answering tasks. "
+        "Use the following pieces of retrieved context to answer "
+        "the question. If you don't know the answer, say that you "
+        "don't know. Tell me the answer directly.\n\n"
+        "{context}"
+    )
+  prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("human", "{input}")
+    ])
+  question_answer_chain = create_stuff_documents_chain(llm=llm, prompt=prompt)
+  custom_retriever = CustomRetriever(vectorstore=vectorstore)
+  rag_chain = create_retrieval_chain(custom_retriever, question_answer_chain)
+    #   rag_chain = setup_rag(llm, vectorstore)
 
   for message in st.session_state.history:
       with st.chat_message(message["role"]):
