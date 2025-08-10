@@ -1,6 +1,6 @@
-torch==2.7.1+cu126
-torchaudio==2.7.1+cu126
-torchvision==0.22.1+cu126
+torch==2.7.1
+torchaudio==2.7.1
+torchvision==0.22.1
 transformers==4.53.1
 accelerate==1.8.1
 sentence-transformers==5.0.0
