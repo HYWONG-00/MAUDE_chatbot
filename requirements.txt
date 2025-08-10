@@ -19,3 +19,5 @@ spacy==3.8.7
 openpyxl==3.1.5
 peft==0.17.0
 bitsandbytes==0.46.1
+pysqlite3-binary
+
