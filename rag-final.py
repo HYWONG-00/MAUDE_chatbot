@@ -4,6 +4,15 @@
 #### Storing everything in ChromaDB
 #### https://medium.com/keeping-up-with-ai/how-i-built-a-rag-based-ai-chatbot-from-my-personal-data-88eec0d3483c
 
+import sys
+
+# Force Python to use the updated pysqlite3 instead of the built-in sqlite3
+try:
+    import pysqlite3
+    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+except ImportError:
+    pass
+    
 from langchain.schema import Document
 
 import pandas as pd
