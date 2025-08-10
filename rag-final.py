@@ -19,6 +19,8 @@ import pandas as pd
 import numpy as np
 
 import chromadb
+from chromadb.config import Settings
+
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 import re
@@ -36,7 +38,6 @@ from langchain_core.documents import Document
 from typing import Callable
 
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-from peft import LoraConfig, get_peft_model
 from langchain.llms import HuggingFacePipeline
 
 from dotenv import load_dotenv
@@ -54,7 +55,11 @@ TRANSFORMER_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 ## for chroma vector database
 CHROMA_PATH = "chroma"
 COLLECTION_PRETRAINED_GISTPATH = "langchain-pretrained-GIST"
-CLIENT = chromadb.PersistentClient(path=CHROMA_PATH)
+CLIENT = chromadb.PersistentClient(settings=Settings(
+                                    is_persistent=True,
+                                    anonymized_telemetry=False,
+                                    allow_reset=True
+                                ), path=CHROMA_PATH)
 
 class MyEmbeddingFunction:
     def __init__(self, embedding_model):
@@ -275,9 +280,9 @@ def main():
 
       ### setup database, embed the whole original dataset with my embedding model
       vectorstore = Chroma(
-          collection_name=COLLECTION_PRETRAINED_GISTPATH,
-          embedding_function=embedding_function,
-          persist_directory=CHROMA_PATH
+          client=CLIENT,
+            collection_name=COLLECTION_PRETRAINED_GISTPATH,
+            embedding_function=embedding_function
       )
 
       st.success("Done")
