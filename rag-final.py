@@ -258,8 +258,8 @@ def get_answer(text):
     return match.group(1).strip() if match else text.strip()
 
 def main():
-  alldata = pd.read_excel("for rag.xlsx", sheet_name="Sheet1")
-  creating_chromadb(alldata)
+#   alldata = pd.read_excel("for rag.xlsx", sheet_name="Sheet1")
+#   creating_chromadb(alldata)
   ############ Done - Setting up fine-tuned GPT-2 model
   model_id = "fine_tuned_llama32"
   tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -357,7 +357,7 @@ if __name__ == "__main__":
 
 # what is the adverse event for 18138978
 # can you tell me the reports received for male from 2022 to 2024
-# https://maudechatbot-ag9lsg4bvwnyzmwk3bwgch.streamlit.app/
+# https://maudechatbot-ajgpwyobfuysmegnrorykf.streamlit.app/
 
 
 
