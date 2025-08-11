@@ -26,6 +26,7 @@ from tqdm import tqdm
 import re
 import torch
 
+import traceback
 #### For interactive RAG chatbot
 import streamlit as st
 from langchain_chroma import Chroma
@@ -338,7 +339,12 @@ def main():
                 st.session_state.history.append({"role": "assistant", "content": f"❌ Error: {str(e)}"})
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        st.error(traceback.format_exc())
+        raise
+
 
 ### Run streamlit app
 ### python -m streamlit run rag-final.py
