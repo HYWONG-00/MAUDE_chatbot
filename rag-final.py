@@ -48,8 +48,8 @@ import os
 from huggingface_hub import login
 ### this is for streamlit cloud
 ### I changed something
-HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
-# HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
+# HUGGINGFACE_TOKEN = st.secrets["HUGGINGFACE_TOKEN"]
+HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 login(token=HUGGINGFACE_TOKEN) 
 
 os.environ["CHROMA_DISABLE_WATCH"] = "true"
@@ -104,6 +104,28 @@ def creating_chromadb(alldata):
             "PATIENT_SEX": str(row['PATIENT_SEX'])
         }
         documents.append(Document(page_content=content, metadata=metadata))
+
+    ### Trends analysis (overall)
+    trend_df = alldata.groupby(["YEAR"]).size().reset_index(name="count")
+    for year in trend_df["YEAR"].unique():
+        group = trend_df[trend_df["YEAR"] == year]
+        trend_summary = "\n".join([
+            f"In {row['YEAR']}, there were {row['count']} reports"
+            for _, row in group.iterrows()
+        ])
+
+        trend_doc = (
+            f"Trend Summary:\n"
+            f"Year: {year}\n"
+            f"Adverse event reports per year:\n{trend_summary}"
+        )
+
+        metadata = {
+            "MDR_REPORT_KEY": f"adverse_events_by_year_{row['YEAR']}", # just a fake one
+            "type": "trend_summary",
+            "YEAR": year
+        }
+        documents.append(Document(page_content=trend_doc, metadata=metadata))
 
     ### Trends analysis (for patient sex only)
     trend_df = alldata.groupby(["YEAR", "PATIENT_SEX"]).size().reset_index(name="count")
@@ -236,23 +258,6 @@ class CustomRetriever(BaseRetriever):
 #### Building the interactive RAG chatbot with fine-tuned GPT-2 LLM and allMiniLM sentence transformer
 print("Building RAG chatbot.....")
 
-# @st.cache_resource
-# def setup_rag(_llm, _vectorstore):
-#     system_prompt = (
-#         "You are an assistant for question-answering tasks. "
-#         "Use the following pieces of retrieved context to answer "
-#         "the question. If you don't know the answer, say that you "
-#         "don't know. Tell me the answer directly.\n\n"
-#         "{context}"
-#     )
-#     prompt = ChatPromptTemplate.from_messages([
-#         ("system", system_prompt),
-#         ("human", "{input}")
-#     ])
-#     question_answer_chain = create_stuff_documents_chain(llm=_llm, prompt=prompt)
-#     custom_retriever = CustomRetriever(vectorstore=_vectorstore)
-#     return create_retrieval_chain(custom_retriever, question_answer_chain)
-
 # Function to extract answer
 def get_answer(text):
     import re
@@ -260,8 +265,8 @@ def get_answer(text):
     return match.group(1).strip() if match else text.strip()
 
 def main():
-#   alldata = pd.read_excel("for rag.xlsx", sheet_name="Sheet1")
-#   creating_chromadb(alldata)
+  alldata = pd.read_excel("for rag.xlsx", sheet_name="Sheet1")
+  creating_chromadb(alldata)
   ############ Done - Setting up fine-tuned GPT-2 model
   model_id = "fine_tuned_llama32"
   tokenizer = AutoTokenizer.from_pretrained(model_id)
